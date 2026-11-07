@@ -1,0 +1,12 @@
+name: build
+on: [push, workflow_dispatch]
+permissions:
+  packages: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+      - run: docker build -t ghcr.io/${{ github.repository_owner }}/onezero:1 .
+      - run: docker push ghcr.io/${{ github.repository_owner }}/onezero:1
