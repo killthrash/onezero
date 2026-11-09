@@ -6,4 +6,4 @@ best=$(for r in us us2 us3 ca br fr de es fi ru tr hk jp sg au; do
 done | awk '$1>0' | sort -n | head -1 | cut -d' ' -f2)
 echo "pool region: ${best:-us}"
 cd /opt/onezerominer-linux
-exec ./onezerominer -a pearl -w prl1prxkhr2d57pv9rytsv2qnyqjdat0aa0xarcgm66fa85yd7nj8m8gqkl3yew -o ${best:-us}.pearl.herominers.com:1200 --worker salad-$(hostname)
+exec ./onezerominer -a pearl -w prl1p062nyyn7u8y7l44n8z0a8229cxfy03yfzfhj2pu37raje34u9kesghws6g -o ${best:-us}.pearl.herominers.com:1200 --worker salad-${gpu:-unknown}
